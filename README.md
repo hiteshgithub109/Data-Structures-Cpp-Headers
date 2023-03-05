@@ -71,7 +71,3 @@ bool isEmpty = myLinkedList.empty();
 ## Contributing
 
 Contributions are welcome! If you find any bugs or want to add new features, please create a pull request or submit an issue.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](MyLibraryLicense.license) file for details.
