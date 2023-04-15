@@ -5,25 +5,52 @@ int main(){
     cout<<"\n***********************************************************************************";
     cout<<"\nThis is the testing file to check whether all functions are working properly or not";
     cout<<"\n***********************************************************************************\n";
-    int i;
-    LinkedList<int> l;
-    for( i = 4; i >= 0; i--)
-    l.push_front(i);
-    for( i = 6; i <= 10; i++)
-    l.push_back(i);
-    l.insert(5, 5);
-    cout<<"\nThe size of current list is: "<<l.size()<<"\nThe elements in the list are: "<<endl;
-    for( i = 0; i < l.size(); i++)
-    cout<<l[i]<<" ";
+    //creating a LinkedList object
+    LinkedList<int> list;
+
+    //testing push_front()
+    for(int i = 5; i > -1; i--) list.push_front(i);
+
+    //testing push_back()
+    for(int i = 6; i < 12; i++) list.push_back(i);
+
+    //testing overloaded operator [] by accessing elements using loop and size too at the same time
+    for(int i = 0; i < list.size(); i++) cout<<list[i]<<" ";
+    
     cout<<endl;
-    l.remove(0);
-    cout<<"\nAfter removing element at index zero the size of the list is: "<<l.size();
-    cout<<"\nThe updated list is: ";
-    for(i = 0; i < l.size(); i++)
-    cout<<l[i]<<" ";
+
+    //using remove()
+    list.remove(5);
+
+    //using insert();
+    list.insert(5, 15);
+    cout<<"After insertion at index 5 of number 15: ";
+    for(int i = 0; i < list.size(); i++) cout<<list[i]<<" ";
+
+    //using pop_front() and pop_back();
+    list.pop_front();
+    list.pop_back();
+
+    //using front() and back() methods
+    int f = list.front();
+    int b = list.back();
+    cout<<"\nFront and back elements(after pop_front() and pop_back()) respectively are: "<<f<<" and "<<b;
+
+    //testing size()
+    cout<<"\nSize: "<<list.size();
+
+    //testing find()
+    cout<<"\nThe element 10 is present at index: "<<list.find(10);
+
+    //testing sort() and then reverse()
+    list.sort();
+    list.reverse();
+    cout<<"\nThe descending order of list is: ";
+    for(int i = 0; i < list.size(); i++) cout<<list[i]<<" ";
+
+    //testing clear() and checking the list is empty after clear() and before clear()
+    cout<<"\nBefore clear: "<<list.empty();
+    list.clear();
+    cout<<"\nAfter clear: "<<list.empty();
     cout<<endl;
-    l.clear();
-    cout<<"\nWhether the list is cleared or not: ";
-    if(l.empty() == 1) cout<<"true";
-    else cout<<"false";
 }
