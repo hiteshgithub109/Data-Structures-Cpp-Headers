@@ -3,7 +3,9 @@
 
 /**
  *  @brief LinkedList implementation that supports adding and removing the nodes at the front and back
- *  along with adding and removing at an arbitrary positon in the LinkedList.
+ *  along with adding and removing at an arbitrary positon in the LinkedList. 
+ *  @note Implemented using Double Linked list
+ * 
  * 
  *  @tparam T The type of element stored in the list.
 */
@@ -16,8 +18,8 @@ public:
      */
     struct Node{
         T data;///< The element stored in the node.
-        Node *next;///< A pointer to the next node in the list.
-        Node(const T& data): data(data), next(nullptr){}
+        Node *next, *prev;///< A pointer to the next node in the list.
+        Node(const T& data): data(data), next(nullptr), prev(nullptr){}
     };
 
     /**
@@ -63,8 +65,8 @@ public:
      *  in the LinkedList.
      *  If the given index is out of range it throws `std::out_of_range` exception
      * 
-     *  @param value data to be added
      *  @param index postition at which the given data is to be added starting from 0
+     *  @param value data to be added
      * 
      *  @throws std::out_of_range Thrown when the index given by user is less
      *  than 0 or greater than the size of LinkedList.
@@ -78,7 +80,7 @@ public:
      *  specified postition making the time complexity for this operation as O(n), where n is the size of 
      *  LinkedList.
     */
-    void insert(const T& value, int index);
+    void insert(int index, const T& value);
 
     /**
      *  @brief Removes the node at the specified index in the LinkedList.
@@ -96,6 +98,52 @@ public:
      *  of the LinkedList.
     */
     void remove(int index);
+
+    /**
+     * @brief Removes the first element form the LinkedList.
+     * @return None
+    */
+    void pop_front();
+    
+    /**
+     * @brief Removes the last element form the LinkedList.
+     * @return None
+    */
+    void pop_back();
+
+    /**
+     * @brief Returns the first element of the LinkedList.
+     * This is constant function which returns reference to first element of LinkedList.
+     * 
+     * @return <typename T&> Reference to first list element.
+    */
+    T& front() const;
+
+    /**
+     * @brief Returns the last element of the LinkedList.
+     * This is constant function which returns reference to last element of LinkedList.
+     * 
+     * @return <typename T&> Reference to last list element.
+    */
+    T& back() const;
+
+    /**
+     *  @brief Sorts the elements in the list in ascending order.
+     *  @note Sorted using bubble sort. So might be slow for larger data.
+    */
+    void sort();
+
+    /**
+     *  @brief Searches the list for a given value and returns the index of first occurrence.
+     *  @returns int- index if the element is found else -1
+     *  @param element Value to be searched
+    */
+    int find(const T& element) const;
+
+    /**
+     *  @brief Reverses the order of the elements in the list
+    */
+    void reverse();
 
     /**
      *  @brief Returns the number of nodes in LinkedList. 
